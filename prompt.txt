@@ -1,0 +1,27 @@
+需求说明
+需要大模型对design spec文档中的信息，包括对图片进行理解，补全必要的说明，并提供完整的文字介绍。
+需求分析
+Design spec文档中图片来源于jedec文档的截图，理解图片需要jedec中原图的上下文信息或其他关联信息。根据产品设计方案，在最开始需要对用户提供的spec文档进行详细的理解说明，供用户校验。jedec文档会解析成一个md文件，图像会以链接形式存在，格式如：
+
+City/State/Zip:
+
+Date:
+
+![JEDEC®](http://10.56.3.148:8460/api/contracts/v3/parser/image/download?image_id=cGFyc2VyLzE3Ni8yMDI2MDQyMy84OTgxMC9hNjBmZjZkOWY3Njc5YmQ2LmpwZw.jpg)
+
+图片我可以提前下载下来存到本地文件夹内便于比对相似度。
+
+解析难点
+
+1. jedec图片解析偶尔会出现裁剪错误的问题
+
+2. 电路图图片可以提前解析（或标注），计算 Embedding 并保存为 jedec_embeddings.npy 和 jedec_metadata.json。Pipeline 启动时直接加载。
+
+3. 定位：采用图像相似度算法，模型地址：dinov3-convnext-base-pretrain-lvd1689m
+
+4. 上下文提取：根据限定扩展长度/根据语义提取上下文，支持两种方式
+
+5. 图片信息翻译：考虑采用能力强的多模态大模型进行解析，会有本地openai api compatible的url和key。
+
+
+我需要开发这个pipeline，先给我代码架构
