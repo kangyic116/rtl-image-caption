@@ -1,0 +1,22 @@
+我有以下几点要求：
+1. 扩展点里提到的修改，按你说的来改。
+- 向量后端: 可替换为 FAISS
+- 质量检测: 可叠加 OCR 密度、边缘截断检测
+- 上下文抽取: 可接入 reranker
+- 输出格式: json
+
+2. 完善代码，整个功能可以做成一个接口，输入是spec_images，指定的jedec版本，输出是一个json，包含每个image本身由多模态大模型解读出的信息，以及每个image的上下文信息。
+（jedec是有很多版本的，可以通过config去map到存储位置）
+
+3. 下载图片，准备embedding，虽然是一次性的，但是代码也生成出来，可以放在你认为合理的位置。
+
+4. 模型接口：
+glm-4.5v-fp8
+http://agi-gateway.cxmt.com/v1
+sk—xxxx
+
+DeepSeek-V32-fp8
+http://t-llmserver.ai.cdtp.com/v1
+sk—xxxx
+
+请生成完整的项目代码。
